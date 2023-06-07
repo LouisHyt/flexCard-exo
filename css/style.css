@@ -31,13 +31,47 @@ body{
 
 .card .card-header {
     height: 200px;
+    overflow: hidden;
+    position: relative;
 }
+
+.card .card-header::after{
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    width: 50px;
+    height: 50px;
+    background-color: red;
+    border-bottom-right-radius: 10px;
+    background-image: url("../img/heart-icon.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 50%;
+    transform: translateX(-100%);
+    opacity: 0;
+    transition: .5s ease-in-out;
+}
+
+
+.card .card-header:hover::after{
+    opacity: 1;
+    transform: translateX(0%);
+}
+
 
 .card .card-header img{
     width: 300px;
     height: 200px;
     object-fit: cover;
     cursor: pointer;
+    filter: grayscale(100%);
+    transition: all .5s ease-in-out;
+}
+
+.card .card-header:hover img{
+    filter: grayscale(0%);
+    transform: scale(1.1);
 }
 
 .card .card-text{
